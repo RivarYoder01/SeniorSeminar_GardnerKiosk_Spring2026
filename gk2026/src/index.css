@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Yaldevi:wght@200..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bur-dark: #6C1A28;
+  --color-bur-light: #9D2F3C;
+  --color-gold-dark: #F2A65A;
+  --color-gold-light: #F6D5A8;
+  --color-slate: #2F3D46;
+
+  --font-h1: "Arya", serif;
+  --font-heading: "Yaldevi", sans-serif;
+  --font-body: "Yaldevi", sans-serif;
+}
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--color-bur-dark);
+  background-color: var(--color-slate);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+   --color-bur-dark: #6C1A28;
+  --color-bur-light: #9D2F3C;
+  --color-gold-dark: #F2A65A;
+  --color-gold-light: #F6D5A8;
+  --color-slate: #2F3D46;
+}
+
+
+h1 {
+  font-family: var(--font-h1);
+  font-size: 64px;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: 36px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+h4 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h5 {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+h6 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+p,
+a {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
