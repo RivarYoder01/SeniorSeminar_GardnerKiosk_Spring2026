@@ -40,11 +40,11 @@ const navigate = useNavigate()
       <Header children='Classrooms'/> 
       <DropDown />
       <CardClassrooms 
-        classroomImage="https://i.imgur.com/X4XO5FN.png"
+        classroomImage="https://i.imgur.com/Gmv5buj.jpeg"
         classroomMap="https://i.imgur.com/jiMQT49.png"
-        classroomNumber="101"
-        classroomFloor="2"
-        classroomLayout="Classroom"
+        classroomNumber="100"
+        classroomFloor="1"
+        classroomLayout="Auditorium"
       />
       
       <div className="mx-20 mt-10">
