@@ -1,5 +1,5 @@
-import { Container } from './components';
-import { Button } from './components';
+import { Container } from '../components';
+import { Button } from '../components';
 
 
 function Admin() {

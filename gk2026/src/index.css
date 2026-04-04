@@ -58,7 +58,7 @@ h3 {
 
 h4 {
   font-family: "Arya", serif;;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 500;
 }
 
@@ -77,6 +77,40 @@ h6 {
 p,
 a {
   font-family: "Yaldevi", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--color-gold-dark);
+}
+
+button {
+  font-family: "Yaldevi", sans-serif;
   font-size: 24px;
   font-weight: 300;
+  color: var(--color-gold-light);
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+div {  
+  animation: 1s ease-out 0s 1 slideInFromTop;
+}
+
+@keyframes slideOutFromBottom {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 }

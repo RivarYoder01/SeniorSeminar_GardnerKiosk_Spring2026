@@ -2,6 +2,9 @@ import { Container } from './components';
 // import { Header } from './components';
 import { Button } from './components';
 
+import { Link, useNavigate } from "react-router-dom"
+
+
 
 function App() {
   return (
@@ -15,11 +18,19 @@ function App() {
       </div>
 
       {/* Button Set */}
-      <div className="grid grid-cols-2 gap-10 mx-20">
-        <Button children="Faculty and Staff" />
-        <Button children="Classrooms and Labs" />
-        <Button children="Programs and Clubs" />
-        <Button children="History and Floor Plans" /> 
+      <div className="grid grid-cols-2 gap-10 mx-20 [&>a]:block [&>a]:w-full">
+        <Link to="/faculty">
+          <Button children="Faculty and Staff" />
+        </Link>
+        <Link to="/programs">
+          <Button children="Programs and Clubs" />
+        </Link>
+        <Link to="/classrooms">
+          <Button children="Classrooms and Labs" />
+        </Link>
+        <Link to="/history">
+          <Button children="History and Schematics" /> 
+        </Link>
       </div>
     </Container>
   )
