@@ -1,6 +1,7 @@
 import { Container, Button, Header, DropDown, CardClassrooms } from '../components';
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect } from 'react'
+import { classrooms } from '../data/classrooms';
 
 
 
@@ -38,15 +39,27 @@ const navigate = useNavigate()
   return (
     <Container>
       <Header children='Classrooms'/> 
-      <DropDown />
-      <CardClassrooms 
-        classroomImage="https://i.imgur.com/Gmv5buj.jpeg"
-        classroomMap="https://i.imgur.com/jiMQT49.png"
-        classroomNumber="100"
-        classroomFloor="1"
-        classroomLayout="Auditorium"
-      />
-      
+      <div className="mx-20">
+        <DropDown 
+            label="layout"
+            options={[
+              { value: "*", label: "All" },
+              { value: "classroom", label: "Classroom" },
+              { value: "lecture_hall", label: "Lecture Hall" },
+              { value: "computer_lab", label: "Computer Lab" },
+              { value: "auditorium", label: "Auditorium" },
+            ]}
+          />
+      </div>
+      {classrooms.map((classrooms) => (
+          <CardClassrooms 
+            classroomImage={classrooms.image}
+            classroomMap={classrooms.map}
+            classroomNumber={classrooms.name}
+            classroomFloor={classrooms.floor}
+            classroomLayout={classrooms.layout}
+          />
+        ))}
       <div className="mx-20 mt-10">
         <Link to="/">
           <Button children="Back to Home"/>

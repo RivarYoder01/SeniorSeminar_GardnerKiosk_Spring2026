@@ -1,6 +1,7 @@
 import { Container, Button, Header, DropDown, CardHistory, StoryHistory } from '../components';
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect } from 'react'
+import { history } from '../data/history';
 
 
 
@@ -37,14 +38,22 @@ function History() {
   return (
     <Container>
       <Header children='History'/> 
-      <CardHistory 
-        historyGardnerNow="https://www.wsc.edu/images/hero_document_gardner_hall.jpg"
-        historySummary="Gardner Hall houses the Business and Economics Department at Wayne State. The facility connects to the Center for Applied Technology via a second-story catwalk, providing for all-weather transitions between the two buildings. Gardner Hall, a modern and spacious 40,000 square foot facility, was  built in 1994. Its 200-seat auditorium serves as a great location for  speakers and other events on campus."
-      />
-      <StoryHistory
-        historyDocuments="https://www.wsc.edu/images/hero_document_gardner_hall.jpg"
-      />
-      
+      {history.map((history) => (
+        <CardHistory 
+          historyGardnerNow={history.gardnerNow}
+          historySummary={history.historySummary}
+        />
+      ))}
+      {history.map((history) => (
+        <StoryHistory
+          historyDocuments1={history.historyDocuments1}
+          historyDocuments2={history.historyDocuments2}
+          historyDocuments3={history.historyDocuments3}
+          historyDocuments4={history.historyDocuments4}
+          historyDocuments5={history.historyDocuments5}
+          historyDocuments6={history.historyDocuments6}
+        />
+      ))}
       <div className="mx-20 mt-10">
         <Link to="/">
           <Button children="Back to Home"/>

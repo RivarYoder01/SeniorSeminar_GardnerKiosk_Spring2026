@@ -2,7 +2,7 @@ import { Container, Button, Header, DropDown, CardFaculty } from '../components'
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect } from 'react'
 
-
+import { faculty } from '../data/faculty';
 
 function Faculty() {
   const navigate = useNavigate()
@@ -36,15 +36,27 @@ function Faculty() {
   return (
     <Container>
       <Header children='Faculty and Staff'/> 
-      <DropDown />
-      <CardFaculty 
-        facultyImage="https://www.wsc.edu/images/directory_michelle_laughlin_2022.jpg?1.23.0"
-        facultyName="Michelle Laughlin"
-        facultyDepartment="Buisness and Economics"
-        facultyOffice="111G"
-        facultyPhone="402-375-7022"
-        facultyEmail="milaugh1@wsc.edu"
-      />
+      <div className="mx-20">
+        <DropDown 
+            label="department"
+            options={[
+              { value: "*", label: "All" },
+              {value: "business", label: "Business and Economics" },
+              { value: "ctis", label: "Computer and Technology Information Systems" },
+              
+            ]}
+          />
+      </div>
+      {faculty.map((facultyMember) => (
+        <CardFaculty 
+          facultyImage={facultyMember.headshot}
+          facultyName={`${facultyMember.first_name} ${facultyMember.last_name}`}
+          facultyDepartment={facultyMember.department}
+          facultyOffice={facultyMember.office}
+          facultyPhone={facultyMember.phone}
+          facultyEmail={facultyMember.email}
+        />
+      ))}
       
       <div className="mx-20 mt-10">
         <Link to="/">

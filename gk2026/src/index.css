@@ -82,7 +82,7 @@ a {
   color: var(--color-gold-dark);
 }
 
-button {
+button, label {
   font-family: "Yaldevi", sans-serif;
   font-size: 24px;
   font-weight: 300;
