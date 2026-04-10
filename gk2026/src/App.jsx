@@ -2,8 +2,16 @@ import { Container } from './components';
 // import { Header } from './components';
 import { Button } from './components';
 
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
+import axios from 'axios';
+
+const apiCall = () => {
+  axios.get('http://localhost:8080').then((data) => {
+    //this console.log will be in our frontend console
+    console.log(data)
+  })
+}
 
 
 function App() {
@@ -14,6 +22,7 @@ function App() {
         <h1>
           GARDNER HALL
         </h1>
+        <button onClick={apiCall}>Make API Call</button>
         <div className="mx-20 mb-10 bg-[var(--color-gold-dark)] h-0.5" />
       </div>
 
