@@ -54,9 +54,9 @@ function History() {
           historyDocuments6={history.historyDocuments6}
         />
       ))}
-      <div className="mx-20 mt-10">
+      <div className="fixed bottom-0 right-0 w-1/10 m-6">
         <Link to="/">
-          <Button children="Back to Home"/>
+          <Button children="Back"/>
         </Link>
       </div>
 
