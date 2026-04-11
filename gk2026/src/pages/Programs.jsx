@@ -88,11 +88,10 @@ function Programs() {
           key={program.id}
           programImage={program.logo}
           programName={program.name}
-          programGPA={program.gpa}
-          programRank={program.class_rank}
-          programCredits={program.completed_credits}
           programSpecial={program.special_requirements}
           programDiscipline={program.discipline}
+          programMeetingTime={program.meeting_time}
+          programContact={program.advisor}
         />
       ))}
 
