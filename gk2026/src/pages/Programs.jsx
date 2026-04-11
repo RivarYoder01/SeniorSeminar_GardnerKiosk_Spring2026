@@ -1,12 +1,16 @@
 import { Container, Button, Header, DropDown, CardPrograms } from '../components';
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
-import {programs} from '../data/programs.js'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081';
  
 
 function Programs() {
   const navigate = useNavigate()
+  const [programs, setPrograms] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const activityEvents = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll']
@@ -34,6 +38,35 @@ function Programs() {
     }
   }, [navigate])
 
+  useEffect(() => {
+    let isMounted = true
+
+    const loadPrograms = async () => {
+      try {
+        setIsLoading(true)
+        setError('')
+        const response = await axios.get(`${API_BASE_URL}/programs`)
+        if (isMounted) {
+          setPrograms(Array.isArray(response.data) ? response.data : [response.data])
+        }
+      } catch {
+        if (isMounted) {
+          setError('Unable to load programs from the database.')
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadPrograms()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
   return (
     <Container>
       <Header children='Programs and Clubs'/> 
@@ -48,8 +81,11 @@ function Programs() {
             ]}
           />
       </div>
-      {programs.map((program) => (
+      {isLoading && <div className="mx-20 my-10">Loading programs from the database...</div>}
+      {error && <div className="mx-20 my-10 text-red-700">{error}</div>}
+      {!isLoading && !error && programs.map((program) => (
         <CardPrograms
+          key={program.id}
           programImage={program.logo}
           programName={program.name}
           programGPA={program.gpa}

@@ -1,11 +1,15 @@
 import { Container, Button, Header, DropDown, CardFaculty } from '../components';
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
-import { faculty } from '../data/faculty';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081';
 
 function Faculty() {
   const navigate = useNavigate()
+  const [faculty, setFaculty] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const activityEvents = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll']
@@ -33,6 +37,35 @@ function Faculty() {
     }
   }, [navigate])
 
+  useEffect(() => {
+    let isMounted = true
+
+    const loadFaculty = async () => {
+      try {
+        setIsLoading(true)
+        setError('')
+        const response = await axios.get(`${API_BASE_URL}/faculty`)
+        if (isMounted) {
+          setFaculty(Array.isArray(response.data) ? response.data : [response.data])
+        }
+      } catch {
+        if (isMounted) {
+          setError('Unable to load faculty from the database.')
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadFaculty()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
   return (
     <Container>
       <Header children='Faculty and Staff'/> 
@@ -47,8 +80,11 @@ function Faculty() {
             ]}
           />
       </div>
-      {faculty.map((facultyMember) => (
+      {isLoading && <div className="mx-20 my-10">Loading faculty from the database...</div>}
+      {error && <div className="mx-20 my-10 text-red-700">{error}</div>}
+      {!isLoading && !error && faculty.map((facultyMember, index) => (
         <CardFaculty 
+          key={facultyMember.id ?? index}
           facultyImage={facultyMember.headshot}
           facultyName={`${facultyMember.first_name} ${facultyMember.last_name}`}
           facultyDepartment={facultyMember.department}
