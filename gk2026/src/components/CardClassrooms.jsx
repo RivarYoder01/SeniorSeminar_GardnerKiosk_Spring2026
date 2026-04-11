@@ -5,8 +5,8 @@ function CardClassrooms(props) {
     <div className="mx-20 my-10">
         <div className="text-left grid grid-cols-3 gap-full my-auto">
             <h4 className="my-auto">Room {props.classroomNumber}</h4>
-            <p className="my-auto text-center">Floor: {props.classroomFloor}</p>
-            <p className="my-auto text-right text-nowrap">Layout: {props.classroomLayout}</p>
+            <p className="my-auto text-center"><span className="font-bold">Floor: </span> {props.classroomFloor}</p>
+            <p className="my-auto text-right text-nowrap"><span className="font-bold">Layout: </span> {props.classroomLayout}</p>
         </div>
             
         <div className=" flex flex-row gap-10 h-full">
