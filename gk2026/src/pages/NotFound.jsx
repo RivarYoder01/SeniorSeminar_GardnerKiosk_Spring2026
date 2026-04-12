@@ -2,8 +2,6 @@ import { Container, Header } from '../components';
 import { useNavigate } from "react-router-dom"
 import { useEffect } from 'react'
 
-// import { Button } from './components';
-
 
 function NotFound() {
 const navigate = useNavigate()
